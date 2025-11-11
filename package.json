@@ -1,0 +1,23 @@
+{
+  "name": "registro_prisao_pmdf_bope",
+  "version": "1.0.0",
+  "description": "Servidor WebSocket em tempo real para PMDF/BOPE",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fredywhiterside-glitch/PMDF-BOPE-BRP1.git"
+  },
+  "author": "Fredy WhiterSide",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fredywhiterside-glitch/PMDF-BOPE-BRP1/issues"
+  },
+  "homepage": "https://github.com/fredywhiterside-glitch/PMDF-BOPE-BRP1#readme"
+}
