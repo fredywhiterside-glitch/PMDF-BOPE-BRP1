@@ -19,7 +19,6 @@
 
 <body>
   <div id="root"></div>
-  <button onclick="testarRegistro()">Adicionar Teste</button>
   <script type="module">
   import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
@@ -58,15 +57,25 @@
 
   // 👂 Escuta também via Postgres (garantia de sincronização)
   supabase
-    .channel('registros-db')
-    .on(
-      'postgres_changes',
-      { event: 'INSERT', schema: 'public', table: 'registros' },
-      (payload) => {
+  .channel('registros-db')
+  .on(
+    'postgres_changes',
+    { event: '*', schema: 'public', table: 'registros' },
+    (payload) => {
+      console.log('Mudança detectada:', payload);
+
+      if (payload.eventType === 'INSERT') {
         adicionarRegistro(payload.new);
+      } else if (payload.eventType === 'UPDATE') {
+        // Atualiza o registro visual, se necessário
+        console.log('Registro atualizado:', payload.new);
+      } else if (payload.eventType === 'DELETE') {
+        // Remove o registro da tela
+        console.log('Registro deletado:', payload.old);
       }
-    )
-    .subscribe();
+    }
+  )
+  .subscribe();
 
   // 🧱 Renderizar registros existentes ao abrir
   async function carregarRegistros() {
