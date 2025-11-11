@@ -52,8 +52,7 @@
 
         const dados = await resposta.json();
 
-        // Exemplo: se você tiver um elemento para exibir os dados
-        // pode atualizar diretamente no React, ou no HTML (se quiser testar)
+        // Atualiza conteúdo do app (pode integrar com React ou HTML puro)
         const root = document.getElementById("root");
         if (root && !window.__REACT_DEVTOOLS_GLOBAL_HOOK__) {
           root.innerHTML = `
@@ -71,7 +70,7 @@
 
     // ============ AUTO-ATUALIZAÇÃO DOS DADOS ============
     atualizarDados();              // Atualiza imediatamente ao abrir
-    setInterval(atualizarDados, 5000); // Reatualiza a cada 5 segundos
+    setInterval(atualizarDados, 3000); // Reatualiza a cada 3 segundos
   </script>
 </body>
 
