@@ -1,0 +1,43 @@
+$ cd /workspace/shadcn-ui
+$ cd /workspace/shadcn-ui && pnpm run lint
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+$ cd /workspace/shadcn-ui && pnpm run build
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1680 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-yBj9OJLv.css   63.51 kB │ gzip:  11.17 kB
+dist/assets/index-fXmIpwqk.js   372.39 kB │ gzip: 115.90 kB
+✓ built in 5.21s
+$ mkdir -p /workspace/shadcn-ui/public/assets && cp /workspace/uploads/ba048491-a2e4-46c3-b15b-e11d1beb5e14.jpg /workspace/shadcn-ui/public/assets/brasilia-logo.jpg && cp /workspace/uploads/Emblema_da_Forca_e_Determinacao.png /workspace/shadcn-ui/public/assets/bope-logo.png
+
+$ cd /workspace/shadcn-ui && pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1680 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-DoEBAfRf.css   67.73 kB │ gzip:  12.07 kB
+dist/assets/index-BbNRCMcj.js   379.26 kB │ gzip: 117.65 kB
+✓ built in 5.22s

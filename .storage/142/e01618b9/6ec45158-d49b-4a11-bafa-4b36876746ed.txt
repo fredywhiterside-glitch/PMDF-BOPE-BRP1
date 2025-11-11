@@ -1,0 +1,18 @@
+$ cd /workspace/shadcn-ui && pnpm run build 2>&1 | head -100
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1428 modules transformed.
+x Build failed in 3.76s
+error during build:
+Could not resolve "./supabase" from "src/lib/supabase-storage.ts"
+file: /workspace/shadcn-ui/src/lib/supabase-storage.ts
+    at getRollupError (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+    at error (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+    at ModuleLoader.handleInvalidResolvedId (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:21442:24)
+    at file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:21402:26
+ ELIFECYCLE  Command failed with exit code 1.

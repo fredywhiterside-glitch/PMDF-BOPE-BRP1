@@ -1,0 +1,1 @@
+$ cp "/workspace/uploads/#short (8).png" /workspace/shadcn-ui/public/assets/sidebar-bg.png

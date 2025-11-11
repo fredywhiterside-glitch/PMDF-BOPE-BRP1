@@ -1,0 +1,40 @@
+$ cd /workspace/shadcn-ui && cp /workspace/uploads/ba048491-a2e4-46c3-b15b-e11d1beb5e14\ \(1\).jpg public/assets/brasilia-logo.jpg
+$ cd /workspace/shadcn-ui && cp /workspace/uploads/Emblema_da_Forca_e_Determinacao\ \(1\).png public/assets/bope-logo.png
+
+$ cd /workspace/shadcn-ui && pnpm run build && pnpm run lint
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1809 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-DHqUrrHa.css   69.32 kB │ gzip:  12.29 kB
+dist/assets/index-D_NHraAU.js   584.37 kB │ gzip: 174.93 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 8.66s
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+$ find /workspace/shadcn-ui/src -name "*.tsx" -type f | grep -E "(Dashboard|Admin)" | head -5
+
+/workspace/shadcn-ui/src/pages/Admin.tsx
+/workspace/shadcn-ui/src/pages/Dashboard.tsx
+$ cd /workspace/shadcn-ui && find src/pages -name "*.tsx" -type f | head -10
+
+src/pages/Admin.tsx
+src/pages/Dashboard.tsx
+src/pages/Index.tsx
+src/pages/Login.tsx
+src/pages/NewRecord.tsx
+src/pages/NotFound.tsx
+src/pages/Welcome.tsx

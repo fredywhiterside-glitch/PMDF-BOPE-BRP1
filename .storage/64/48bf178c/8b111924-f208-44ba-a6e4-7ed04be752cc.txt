@@ -1,0 +1,159 @@
+$ cd /workspace/shadcn-ui && pnpm run lint && pnpm run build
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+/workspace/shadcn-ui/src/lib/storage.ts
+  83:7  error  'message' is never reassigned. Use 'const' instead  prefer-const
+
+✖ 1 problem (1 error, 0 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+
+ ELIFECYCLE  Command failed with exit code 1.
+$ cd /workspace/shadcn-ui && pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1725 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-CsR6XFJY.css   67.90 kB │ gzip:  12.11 kB
+dist/assets/index-sFS6IJPZ.js   434.15 kB │ gzip: 134.77 kB
+✓ built in 5.29s
+$ cd /workspace/shadcn-ui && pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1727 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-BsdRucXE.css   68.63 kB │ gzip:  12.21 kB
+dist/assets/index-CEjwzXkk.js   446.20 kB │ gzip: 137.47 kB
+✓ built in 5.76s
+$ cd /workspace/shadcn-ui && pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1727 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-BsdRucXE.css   68.63 kB │ gzip:  12.21 kB
+dist/assets/index-B3QTiOdY.js   446.57 kB │ gzip: 137.60 kB
+✓ built in 6.07s
+$ cd /workspace/shadcn-ui && pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1727 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-CsQRWK8t.css   70.36 kB │ gzip:  12.39 kB
+dist/assets/index-DVqqDBOg.js   452.71 kB │ gzip: 138.95 kB
+✓ built in 5.97s
+$ cd /workspace/shadcn-ui && pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1727 modules transformed.
+x Build failed in 3.62s
+error during build:
+src/pages/Admin.tsx (12:63): "isComando" is not exported by "src/lib/auth.ts", imported by "src/pages/Admin.tsx".
+file: /workspace/shadcn-ui/src/pages/Admin.tsx:12:63
+
+10: import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+11: import { ArrowLeft, UserCheck, UserX, Trash2, Save, Users, Webhook, FileText, Settings as SettingsIcon } from 'lucide...
+12: import { getCurrentUser, getUsers, updateUserRole, deleteUser, isComando, getRoleLabel } from '@/lib/auth';
+                                                                   ^
+13: import { getSettings, saveSettings, getLogs, addLog } from '@/lib/storage';
+14: import { User, UserRole, LogEntry } from '@/types';
+
+    at getRollupError (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+    at error (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+    at Module.error (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:16830:16)
+    at Module.traceVariable (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:17279:29)
+    at ModuleScope.findVariable (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:14925:39)
+    at FunctionScope.findVariable (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:5620:38)
+    at FunctionBodyScope.findVariable (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:5620:38)
+    at ReturnValueScope.findVariable (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:5620:38)
+    at FunctionBodyScope.findVariable (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:5620:38)
+    at Identifier.bind (file:///workspace/shadcn-ui/node_modules/.pnpm/rollup@4.45.1/node_modules/rollup/dist/es/shared/node-entry.js:5394:40)
+ ELIFECYCLE  Command failed with exit code 1.
+$ cd /workspace/shadcn-ui && pnpm run lint && pnpm run build
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1727 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-BN0CfqJO.css   70.50 kB │ gzip:  12.40 kB
+dist/assets/index-DhTbI_Cr.js   461.84 kB │ gzip: 139.67 kB
+✓ built in 5.93s
+$ cd /workspace/shadcn-ui && pnpm run build
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1727 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-BN0CfqJO.css   70.50 kB │ gzip:  12.40 kB
+dist/assets/index-CjIqOe5H.js   461.79 kB │ gzip: 139.68 kB
+✓ built in 6.58s

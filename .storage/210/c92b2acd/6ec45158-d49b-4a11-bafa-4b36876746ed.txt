@@ -1,0 +1,48 @@
+$ cd /workspace/shadcn-ui && grep -n "localStorage.setItem('individual_data'" src/ -r
+src/pages/Dashboard.tsx:205:    localStorage.setItem('individual_data', JSON.stringify({
+$ cd /workspace/shadcn-ui && pnpm run lint
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+$ cd /workspace/shadcn-ui && pnpm run lint
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+$ cd /workspace/shadcn-ui && pnpm run lint
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+$ cd /workspace/shadcn-ui && pnpm run lint
+
+
+> shadcnui@ lint /workspace/shadcn-ui
+> eslint --quiet ./src
+
+$ cd /workspace/shadcn-ui && cat src/pages/NewRecord.tsx | head -20
+
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { ArrowLeft, Save, Loader2, Image as ImageIcon, X, Upload, Check, AlertTriangle } from 'lucide-react';
+import { getCurrentUser, canCreateRecords } from '@/lib/auth';
+import { sendToDiscord, getSettings } from '@/lib/storage';
+import { createRecord, createLog, uploadImage, getStorageUsage } from '@/lib/supabase-storage';
+import { PrisonRecord } from '@/types';
+import { toast } from 'sonner';
+
+// Helper function to compress image
+const compressImage = async (base64Image: string, maxSizeMB: number = 0.5): Promise<string> => {
+  return new Promise((resolve) => {
+    const img = new Image();

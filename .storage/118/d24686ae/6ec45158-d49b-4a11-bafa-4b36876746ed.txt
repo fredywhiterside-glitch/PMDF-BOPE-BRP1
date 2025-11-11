@@ -1,0 +1,188 @@
+$ cd /workspace/shadcn-ui && pnpm run build
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1728 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-DrydfvjK.css   69.19 kB │ gzip:  12.29 kB
+dist/assets/index-TvihhroJ.js   466.36 kB │ gzip: 140.28 kB
+✓ built in 5.30s
+$ cd /workspace/shadcn-ui && pnpm run build
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1728 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-DrydfvjK.css   69.19 kB │ gzip:  12.29 kB
+dist/assets/index-UbfvQo9q.js   466.85 kB │ gzip: 140.47 kB
+✓ built in 5.78s
+$ cd /workspace/shadcn-ui && rm -f src/lib/imageUpload.ts && pnpm run build
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1727 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-DrydfvjK.css   69.19 kB │ gzip:  12.29 kB
+dist/assets/index-DFL7dNHi.js   465.77 kB │ gzip: 140.10 kB
+✓ built in 5.60s
+$ cd /workspace/shadcn-ui && cat > test_storage.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Storage</title>
+</head>
+<body>
+    <h1>Testing localStorage</h1>
+    <button onclick="testSave()">Test Save</button>
+    <button onclick="testRead()">Test Read</button>
+    <div id="output"></div>
+    
+    <script>
+        function testSave() {
+            const testRecord = {
+                id: 'test-123',
+                individualName: 'Test Person',
+                location: 'Test Location',
+                reason: 'Test Reason',
+                seizedItems: 'Test Items',
+                responsibleOfficers: 'Test Officers',
+                dateTime: new Date().toISOString(),
+                screenshots: ['data:image/png;base64,test'],
+                createdBy: 'Test User',
+                createdAt: new Date().toISOString()
+            };
+            
+            const records = JSON.parse(localStorage.getItem('pmdf_records') || '[]');
+            records.unshift(testRecord);
+            localStorage.setItem('pmdf_records', JSON.stringify(records));
+            
+            document.getElementById('output').innerHTML = '<p>Saved! Total records: ' + records.length + '</p>';
+        }
+        
+        function testRead() {
+            const records = JSON.parse(localStorage.getItem('pmdf_records') || '[]');
+            document.getElementById('output').innerHTML = '<p>Total records: ' + records.length + '</p><pre>' + JSON.stringify(records, null, 2) + '</pre>';
+        }
+    </script>
+</body>
+</html>
+EOF
+
+$ cd /workspace/shadcn-ui && pnpm run build
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1727 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-DrydfvjK.css   69.19 kB │ gzip:  12.29 kB
+dist/assets/index-BNnUT3hp.js   466.73 kB │ gzip: 140.43 kB
+✓ built in 5.60s
+$ cd /workspace/shadcn-ui && pnpm run build
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1727 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-DrydfvjK.css   69.19 kB │ gzip:  12.29 kB
+dist/assets/index-CYp1fgNq.js   467.50 kB │ gzip: 140.74 kB
+✓ built in 5.63s
+$ cd /workspace/shadcn-ui && pnpm run build
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1727 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-DG6jxZlB.css   69.65 kB │ gzip:  12.34 kB
+dist/assets/index-pua0dsdZ.js   467.42 kB │ gzip: 140.80 kB
+✓ built in 5.60s
+$ cd /workspace/shadcn-ui && pnpm run build
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1729 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-7lNLBp7y.css   69.97 kB │ gzip:  12.37 kB
+dist/assets/index-C6FoB39X.js   473.68 kB │ gzip: 142.82 kB
+✓ built in 5.64s
+$ cd /workspace/shadcn-ui && pnpm run build
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1729 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-7lNLBp7y.css   69.97 kB │ gzip:  12.37 kB
+dist/assets/index-DMTzX9Ds.js   473.40 kB │ gzip: 142.76 kB
+✓ built in 5.82s
+$ cd /workspace/shadcn-ui && pnpm run build
+
+
+> shadcnui@ build /workspace/shadcn-ui
+> vite build
+
+vite v5.4.19 building for production...
+transforming...
+✓ 1729 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.89 kB │ gzip:   0.44 kB
+dist/assets/index-DHRoBh9H.css   70.23 kB │ gzip:  12.41 kB
+dist/assets/index-Br6gyPNV.js   479.25 kB │ gzip: 144.38 kB
+✓ built in 6.83s
+$ cd /workspace/shadcn-ui && pnpm add @supabase/supabase-js
+
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Progress: resolved 45, reused 45, downloaded 0, added 0
+Progress: resolved 146, reused 146, downloaded 0, added 0
+Progress: resolved 447, reused 408, downloaded 0, added 0
+ WARN  1 deprecated subdependencies found: rollup-plugin-terser@7.0.2
+Already up to date
+Progress: resolved 501, reused 427, downloaded 0, added 0, done
+
+Done in 5.3s

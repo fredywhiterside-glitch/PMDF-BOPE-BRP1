@@ -1,0 +1,2 @@
+$ cd /workspace/shadcn-ui && grep -n "localStorage.setItem('individual_data'" src/ -r
+src/pages/Dashboard.tsx:205:    localStorage.setItem('individual_data', JSON.stringify({

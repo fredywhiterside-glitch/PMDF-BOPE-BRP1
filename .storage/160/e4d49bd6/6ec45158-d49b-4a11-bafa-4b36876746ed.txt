@@ -1,0 +1,1 @@
+$ cd /workspace/shadcn-ui && cp /workspace/uploads/ba048491-a2e4-46c3-b15b-e11d1beb5e14\ \(1\).jpg public/assets/brasilia-logo.jpg
