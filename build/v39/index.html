@@ -26,78 +26,61 @@
       height: 100%;
       overflow-x: hidden;
     }
-
-    #info-box {
-      position: fixed;
-      bottom: 10px;
-      left: 20px;
-      font-size: 14px;
-      color: #ccc;
-      opacity: 0.85;
-      z-index: 9999;
-    }
-
-    #mensagens p {
-      margin: 2px 0;
-    }
   </style>
 </head>
 
 <body>
   <div id="root"></div>
 
-  <!-- INFORMAÇÕES EM TEMPO REAL -->
-  <div id="info-box">
-    <p id="hora"></p>
-    <p id="status-conexao"></p>
-    <div id="mensagens"></div>
-  </div>
-
   <script>
-    // ============ RELÓGIO EM TEMPO REAL (SEM DELAY) ============
+    // ============ RELÓGIO E STATUS (AGORA INVISÍVEIS, APENAS INTERNOS) ============
     function atualizarHora() {
       const agora = new Date();
-      document.getElementById("hora").textContent =
-        "Horário: " + agora.toLocaleTimeString("pt-BR", { hour12: false });
+      console.log("Horário:", agora.toLocaleTimeString("pt-BR", { hour12: false }));
     }
-    atualizarHora();
-    setInterval(atualizarHora, 500); // atualização 2x por segundo
+    setInterval(atualizarHora, 500);
 
-    // ============ STATUS DE CONEXÃO (ATUALIZA IMEDIATO) ============
     function atualizarStatusConexao() {
       const status = navigator.onLine ? "Conectado" : "Offline";
-      document.getElementById("status-conexao").textContent = "Status: " + status;
+      console.log("Status de conexão:", status);
     }
-    atualizarStatusConexao();
     window.addEventListener("online", atualizarStatusConexao);
     window.addEventListener("offline", atualizarStatusConexao);
+    atualizarStatusConexao();
 
     // ============ WEBSOCKET EM TEMPO REAL ============
-    const mensagensDiv = document.getElementById("mensagens");
-
     try {
       const socket = new WebSocket("ws://localhost:3000");
 
-      socket.onopen = () => {
-        mensagensDiv.innerHTML = "<p>Conectado ao servidor em tempo real.</p>";
-      };
-
-      socket.onmessage = (event) => {
-        const msg = document.createElement("p");
-        msg.textContent = event.data;
-        mensagensDiv.appendChild(msg);
-      };
-
-      socket.onclose = () => {
-        mensagensDiv.innerHTML += "<p>Conexão encerrada.</p>";
-      };
-
-      socket.onerror = () => {
-        mensagensDiv.innerHTML = "<p>Erro ao conectar ao servidor.</p>";
-      };
+      socket.onopen = () => console.log("Conectado ao servidor em tempo real.");
+      socket.onmessage = (event) => console.log("Mensagem:", event.data);
+      socket.onclose = () => console.log("Conexão encerrada.");
+      socket.onerror = () => console.log("Erro ao conectar ao servidor.");
     } catch (e) {
-      mensagensDiv.textContent = "WebSocket não suportado neste navegador.";
+      console.log("WebSocket não suportado neste navegador.");
     }
+
+    // ============ AUTOUPDATE (ATUALIZAÇÃO AUTOMÁTICA) ============
+    let ultimaVersao = null;
+
+    async function checarAtualizacao() {
+      try {
+        const resposta = await fetch(window.location.href, { cache: "no-store" });
+        const texto = await resposta.text();
+        const hash = btoa(texto);
+
+        if (ultimaVersao && ultimaVersao !== hash) {
+          console.log("Nova versão detectada, recarregando...");
+          location.reload(true);
+        }
+        ultimaVersao = hash;
+      } catch (e) {
+        console.warn("Falha ao verificar atualização:", e);
+      }
+    }
+
+    setInterval(checarAtualizacao, 30000);
+    checarAtualizacao();
   </script>
 </body>
 
