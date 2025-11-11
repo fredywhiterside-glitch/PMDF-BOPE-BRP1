@@ -15,80 +15,71 @@
 
   <script type="module" crossorigin src="./assets/index-Z5Ev_Ti-.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-DmCZH8oS.css">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #0a0f1c; /* fundo escuro */
+      color: white;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    #info-box {
+      position: fixed;
+      bottom: 10px;
+      left: 20px;
+      font-size: 14px;
+      color: #ccc;
+      opacity: 0.85;
+      z-index: 9999;
+    }
+
+    #mensagens p {
+      margin: 2px 0;
+    }
+  </style>
 </head>
 
 <body>
   <div id="root"></div>
 
-  <!-- CHECKBOX "MANTER LOGADO" (DISCRETO) -->
-  <div style="
-      position: fixed;
-      bottom: 15px;
-      right: 20px;
-      color: #ccc;
-      font-size: 14px;
-      font-family: Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      opacity: 0.7;
-      z-index: 9999;
-    ">
-    <input type="checkbox" id="remember" style="accent-color: #2ecc71;" />
-    <label for="remember">Manter logado</label>
-  </div>
-
   <!-- INFORMAÇÕES EM TEMPO REAL -->
-  <div style="text-align:center; color:white; margin-top:30px;">
+  <div id="info-box">
     <p id="hora"></p>
     <p id="status-conexao"></p>
-    <p id="mensagens"></p>
+    <div id="mensagens"></div>
   </div>
 
   <script>
-    // ============ LEMBRAR LOGIN ============
-    const checkbox = document.getElementById("remember");
-
-    // Restaurar estado salvo
-    const lembrar = localStorage.getItem("rememberLogin") === "true";
-    checkbox.checked = lembrar;
-
-    // Atualizar storage quando marcar/desmarcar
-    checkbox.addEventListener("change", () => {
-      localStorage.setItem("rememberLogin", checkbox.checked);
-    });
-
-    // Se "manter logado" estiver marcado, salvar login automaticamente
-    if (lembrar) {
-      localStorage.setItem("isLogged", "true");
-    }
-
-    // ============ RELÓGIO EM TEMPO REAL ============
+    // ============ RELÓGIO EM TEMPO REAL (SEM DELAY) ============
     function atualizarHora() {
       const agora = new Date();
       document.getElementById("hora").textContent =
-        "Horário atual: " + agora.toLocaleTimeString("pt-BR");
+        "Horário: " + agora.toLocaleTimeString("pt-BR", { hour12: false });
     }
-    setInterval(atualizarHora, 1000);
     atualizarHora();
+    setInterval(atualizarHora, 500); // atualização 2x por segundo
 
-    // ============ STATUS DE CONEXÃO ============
+    // ============ STATUS DE CONEXÃO (ATUALIZA IMEDIATO) ============
     function atualizarStatusConexao() {
-      const status = navigator.onLine ? "Online" : "Offline";
+      const status = navigator.onLine ? "Conectado" : "Offline";
       document.getElementById("status-conexao").textContent = "Status: " + status;
     }
+    atualizarStatusConexao();
     window.addEventListener("online", atualizarStatusConexao);
     window.addEventListener("offline", atualizarStatusConexao);
-    atualizarStatusConexao();
 
-    // ============ CONEXÃO COM SERVIDOR (WebSocket) ============
-    let mensagensDiv = document.getElementById("mensagens");
+    // ============ WEBSOCKET EM TEMPO REAL ============
+    const mensagensDiv = document.getElementById("mensagens");
 
     try {
       const socket = new WebSocket("ws://localhost:3000");
 
       socket.onopen = () => {
-        mensagensDiv.innerHTML = "Conectado ao servidor em tempo real.";
+        mensagensDiv.innerHTML = "<p>Conectado ao servidor em tempo real.</p>";
       };
 
       socket.onmessage = (event) => {
@@ -102,7 +93,7 @@
       };
 
       socket.onerror = () => {
-        mensagensDiv.innerHTML = "Erro ao conectar ao servidor.";
+        mensagensDiv.innerHTML = "<p>Erro ao conectar ao servidor.</p>";
       };
     } catch (e) {
       mensagensDiv.textContent = "WebSocket não suportado neste navegador.";
